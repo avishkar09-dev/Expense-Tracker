@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- ================= Start Page ================= -->
+    <div id="startPage" class="page active">
+      <h2>👋 Welcome to Expense Tracker</h2>
+      <p style="text-align:center; margin-bottom:20px;">Please login or sign up to continue</p>
+      <div class="nav-buttons" style="text-align:center;">
+        <button class="btn" onclick="showPage('loginPage')">🔒 Login</button>
+        <button class="btn" onclick="showPage('signupPage')">📝 Sign Up</button>
+      </div>
+    </div>
+
+    <!-- ================= Login Page ================= -->
+    <div id="loginPage" class="page">
+      <h2>🔒 Login</h2>
+      <form id="loginForm">
+        <div class="form-control">
+          <label for="loginPhone">Phone Number</label>
+          <input type="tel" id="loginPhone" placeholder="Enter your phone" required>
+        </div>
+        <div class="form-control">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" placeholder="Enter password" required>
+        </div>
+        <button type="submit" class="btn">Login</button>
+      </form>
+      <p style="text-align:center; margin-top:10px;">
+        Don’t have an account? <a href="#" onclick="showPage('signupPage')">Sign Up</a>
+      </p>
+    </div>
+
+    <!-- ================= Signup Page ================= -->
+    <div id="signupPage" class="page">
+      <h2>📝 Sign Up</h2>
+      <form id="signupForm">
+        <div class="form-control">
+          <label for="signupName">Name</label>
+          <input type="text" id="signupName" placeholder="Enter your name" required>
+        </div>
+        <div class="form-control">
+          <label for="signupEmail">Email</label>
+          <input type="email" id="signupEmail" placeholder="Enter your email" required>
+        </div>
+        <div class="form-control">
+          <label for="signupPhone">Phone Number</label>
+          <input type="tel" id="signupPhone" placeholder="Enter your phone" required>
+        </div>
+        <div class="form-control">
+          <label for="signupDob">Date of Birth</label>
+          <input type="date" id="signupDob" required>
+        </div>
+        <div class="form-control">
+          <label for="signupPassword">Password</label>
+          <input type="password" id="signupPassword" placeholder="Enter password" required>
+        </div>
+        <button type="submit" class="btn">Sign Up</button>
+      </form>
+      <p style="text-align:center; margin-top:10px;">
+        Already have an account? <a href="#" onclick="showPage('loginPage')">Login</a>
+      </p>
+    </div>
+
+    <!-- ================= Home Page ================= -->
+    <div id="homePage" class="page">
+      <h2>💰 Expense Tracker</h2>
+
+      <!-- Monthly Salary & Month -->
+      <div class="salary-section">
+        <h3>💼 Set Monthly Salary</h3>
+        <input type="month" id="monthInput" required>
+        <input type="number" id="monthlySalary" placeholder="Enter salary..." required>
+        <button class="btn" onclick="setMonthlySalary()">Set</button>
+      </div>
+
+      <!-- Balance Section -->
+      <div class="balance-box">
+        <h3>Your Balance</h3>
+        <h2 id="balance">₹0.00</h2>
+      </div>
+
+      <!-- Income & Expense -->
+      <div class="income-expense">
+        <div class="income">
+          <h3>Income</h3>
+          <p id="income">₹0.00</p>
+        </div>
+        <div class="expense">
+          <h3>Expense</h3>
+          <p id="expense">₹0.00</p>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="nav-buttons">
+        <button class="btn" onclick="showPage('historyPage')">📜 Transaction History</button>
+        <button class="btn" onclick="showPage('aboutPage')">📊 About / Summary</button>
+      </div>
+
+      <!-- Add Transaction Form -->
+      <div class="form-section">
+        <h3>➕ Add New Transaction</h3>
+        <form id="form">
+          <div class="form-control">
+            <label for="text">Text</label>
+            <input type="text" id="text" placeholder="Enter description..." required>
+          </div>
+          <div class="form-control">
+            <label for="amount">Amount <br>(+ income, - expense)</label>
+            <input type="number" id="amount" placeholder="Enter amount..." required>
+          </div>
+          <button class="btn">Add Transaction</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ================= Transaction History Page ================= -->
+    <div id="historyPage" class="page">
+      <h2>📜 Transaction History</h2>
+      <div class="history-section">
+        <ul id="list" class="list"></ul>
+      </div>
+      <div class="nav-buttons">
+        <button class="btn" onclick="showPage('homePage')">⬅ Back to Home</button>
+      </div>
+    </div>
+
+    <!-- ================= About Page ================= -->
+    <div id="aboutPage" class="page">
+      <h2>📊 Monthly & Yearly Summary</h2>
+      <div class="summary-section">
+        <table id="summaryTable">
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Salary</th>
+              <th>Total Income</th>
+              <th>Total Expenses</th>
+              <th>Remaining</th>
+            </tr>
+          </thead>
+          <tbody id="summaryBody"></tbody>
+        </table>
+        <p id="yearlySummary"></p>
+      </div>
+      <div class="nav-buttons">
+        <button class="btn" onclick="showPage('homePage')">⬅ Back to Home</button>
+      </div>
+    </div>
+
+  </div>
+  <img src="https://images.pexels.com/photos/209224/pexels-photo-209224.jpeg" id="bg" alt="Expense Tracker">
+
+  <script src="script.js"></script>
+</body>
+</html>
